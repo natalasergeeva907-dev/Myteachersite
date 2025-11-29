@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Студия английского языка "ORANGE"  | Наталья Гурова</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f5f6f8; /* very light silver */
+      --card:#eef0f2; /* card background */
+      --muted:#9aa0a6; /* text muted */
+      --text:#2b2f33; /* main text */
+      --accent:#ff7a25; /* orange */
+      --accent-2:#ff9a57;
+      --glass:rgba(255,255,255,0.6);
+      --shadow: 0 6px 18px rgba(36,41,46,0.06);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg, #f7f8f9 0%, #eceff1 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .container{max-width:1000px;margin:0 auto;padding:28px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+    .brand{display:flex;gap:32px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--card),#dfe6ea);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+    .logo svg{width:32px;height:32px;opacity:0.9}
+    .brand h1{margin:0;font-size:18px;font-weight:600}
+    nav a{margin-left:18px;color:var(--muted);text-decoration:none;font-weight:600}
+    nav a:hover{color:var(--text)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;padding:28px 0}
+    .hero-card{background:linear-gradient(180deg,var(--card),#e9edf0);padding:28px;border-radius:14px;box-shadow:var(--shadow); border:2px solid rgba(0,0,0,0.08); /* ← новая, более заметная граница */}
+    .hero h2{margin:0 0 10px;font-size:28px}
+    .hero p.lead{margin:0 0 20px;color:var(--muted)}
+    .cta{display:flex;gap:12px}
+    .btn{padding:12px 18px;border-radius:10px;border:0;font-weight:600;cursor:pointer}
+    .btn-primary{
+    padding:12px 18px;
+    border-radius:10px;
+    border:0;
+    font-weight:600;
+    cursor:pointer;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    color:white;
+    box-shadow:0 8px 24px rgba(255,122,37,0.18);
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+}
+.btn-primary:hover{
+    transform:translateY(-4px);
+    box-shadow:0 14px 32px rgba(255,122,37,0.32);}
+    .btn-ghost{
+    background:transparent;
+    border:2px solid rgba(43,47,51,0.18);
+    color:var(--text);
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+}
+.btn-ghost:hover{
+    transform:translateY(-4px);
+    box-shadow:0 14px 32px rgba(255,122,37,0.22);
+}
+
+    .sidebar{padding:22px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.6),#f8fafb);border:1px solid rgba(43,47,51,0.04)}
+    .meta{display:flex;gap:12px;align-items:center}
+    .meta .name{font-weight:700}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* Sections */
+    section{padding:28px 0;border-top:1px solid rgba(43,47,51,0.03)}
+    h3.section-title{margin:0 0 18px;font-size:20px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow)}
+
+    /* Форматы занятий */
+    .formats .format-item{display:flex;gap:12px;align-items:flex-start}
+    .format-item svg{width:36px;height:36px;flex-shrink:0}
+    .format-item h4{margin:0 0 6px;font-size:16px}
+
+    /* Стоимость — оформляем как на примере: карточки с акцентом */
+    .prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .price-card{display:flex;flex-direction:column;justify-content:space-between;padding:18px;border-radius:12px;border:2px solid var(--accent);background:linear-gradient(180deg,#ffffff,#f7f8f9);
+    position:relative;
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow:0 6px 18px rgba(255,122,37,0.12);}  
+.price-card:hover{transform:translateY(-8px);box-shadow:0 18px 42px rgba(255,122,37,0.22);} 
+.price-card:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(43,47,51,0.12);}
+    .price-card.popular{padding:18px;border-radius:12px;border:2px solid var(--accent);background:linear-gradient(180deg,#ffffff,#f7f8f9);position:relative;transition:transform 0.25s ease, box-shadow 0.25s ease;box-shadow:0 6px 18px rgba(255,122,37,0.12);}  
+.price-card.popular:hover{transform:translateY(-8px);box-shadow:0 18px 42px rgba(255,122,37,0.22);} 
+.price-card.popular:hover{transform:translateY(-10px);box-shadow:0 20px 48px rgba(255,122,37,0.14)}
+    .price-header{display:flex;justify-content:space-between;align-items:center}
+    .price-sum{font-size:22px;font-weight:700}
+    .price-desc{font-size:13px;color:var(--muted)}
+    .features{margin:12px 0 18px;padding-left:0;list-style:none}
+    .features li{margin-bottom:8px;color:var(--muted)}
+    .price-card .btn{width:100%}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    form{display:flex;flex-direction:column;gap:10px}
+    input,textarea{padding:12px;border-radius:10px;border:1px solid rgba(43,47,51,0.06);background:transparent}
+    textarea{min-height:120px;resize:vertical}
+
+    footer{padding:28px 0;color:var(--muted);font-size:14px}
+
+    /* Responsive */
+    @media (max-width:920px){
+      .hero{grid-template-columns:1fr;}
+      .contact-grid{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden>
+          <!-- simple monogram -->
+          <img src="https://i.postimg.cc/g05JS9fN/Tekst-abzaca-kopia-(1).png" class="format-emoji" style="width:90px;height:80px;flex-shrink:0" alt="emoji"/>
+        </div>
+        <div>
+          <h1>Наталья Гурова</h1>
+          <div class="small">Занятия для детей и взрослых, которые боятся ошибок, теряют мотивацию и не могут начать говорить.</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">Обо мне</a>
+        <a href="#formats">Форматы занятий</a>
+        <a href="#prices">Стоимость</a>
+        <a href="#contact">Контакты</a>
+		<a href="#contact">Отзывы</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-card">
+          <h2>Английский без стресса и без страха ошибок</h2>
+          <p class="lead">Индивидуальные занятия и групповые занятия для школьников, студентов и взрослых в уютной студии. Адаптирую материалы под ваши цели и темперамент обучения.</p>
+          <div class="cta">
+            <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Записаться на пробное</button>
+            <button class="btn btn-ghost" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Узнать подробнее</button>
+          </div>
+          <div style="margin-top:18px;color:var(--muted);font-size:13px">Пробное занятие 30 минут — знакомство и план обучения.</div>
+        </div>
+
+        <aside class="sidebar" style="display:flex;align-items:center;justify-content:center;min-height:320px;text-align:center;font-size:14px;color:var(--muted);background:transparent;border:none;box-shadow:none;padding:0">
+  <img src="https://i.postimg.cc/dVtzhhLN/Текст_абзаца_копия.png"
+       alt="Моё фото"
+       style="width:100%;height:auto;border-radius:12px;object-fit:cover;max-height:420px;"
+       loading="lazy" />
+
+</aside>
+      </section>
+
+       <section id="about">
+        <h3 class="section-title">Обо мне</h3>
+        <div style="display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap">
+          <div style="flex:1;min-width:260px;line-height:1.55">
+            <p>Привет! Я — Наталья, преподаватель английского с 8-летним опытом. Помогаю улучшить разговорную речь, подготовиться к выпускным экзаменам по английскому языку. Работаю с детьми и взрослыми, которым трудно «включиться» в английский: всё забывается, страшно говорить, нет системы и прогресса.</p>
+
+            <p><strong>На моих занятиях мы:</strong></p>
+
+            <ul style="margin:0;padding-left:18px;color:var(--text)">
+              <li>Учимся говорить с уверенностью, а не просто выполнять задания;</li>
+              <li>Разбираем грамматику простыми словами и сразу применяем её в речи;</li>
+              <li>Используем живые материалы: видео, фразы из сериалов, диалоги, квесты;</li>
+              <li>Развиваем навыки для школы, ОГЭ/ЕГЭ и жизни — с пониманием, а не зубрёжкой.</li>
+            </ul>
+
+            <p>Я строю доверие с учениками: здесь можно ошибаться, задавать вопросы, быть собой и двигаться вперёд с ощущением, что всё получается.</p>
+
+            <p>Моя задача — не только объяснить, но и показать, что английский может быть доступным, логичным и по-настоящему интересным.</p>
+
+            <ul style="color:var(--muted);margin-top:8px;padding-left:18px">
+              <li>Диплом Британского университета Goldsmith University</li>
+              <li>Подготовка к сдаче ОГЭ и ЕГЭ</li>
+              <li>Материалы из authentic sources и адаптированные задания</li>
+            </ul>
+          </div>
+		  
+		   <div style="width:280px;background:linear-gradient(180deg,#f7f8f9,#eef2f4);padding:16px;border-radius:12px;box-shadow:var(--shadow)">
+            <div style="font-weight:700">Как проходят занятия</div>
+            <div class="small" style="margin-top:8px">Разговорная практика, грамматика в контексте, работа над произношением, домашние задания, прогресс‑отчёт каждые 4 недели.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="formats" style="margin-top:50mm" class="formats">
+        <h3 class="section-title">Форматы занятий</h3>
+        <div class="grid-3">
+          <div class="card format-item">
+            <img src="https://i.postimg.cc/CxRdQ5rz/1.png" class="format-emoji" style="width:60px;height:60px;flex-shrink:0" alt="emoji"/>
+            <div>
+              <h4>Индивидуальные занятия</h4>
+              <div class="small">Персональная программа, полный фокус на ваших целях.</div>
+            </div>
+          </div>
+          <div class="card format-item">
+            <img src="https://i.postimg.cc/bwZdBrVS/2.png" class="format-emoji" style="width:60px;height:60px;flex-shrink:0" alt="emoji"/>
+            <div>
+              <h4>Минигруппа (2-4 человека)</h4>
+              <div class="small">Экономный вариант — занятия по совместным целям.</div>
+            </div>
+          </div>
+          <div class="card format-item">
+            <img src="https://i.postimg.cc/Gm495tgv/Текст_абзаца_копия.png" class="format-emoji" style="width:60px;height:60px;flex-shrink:0" alt="emoji"/>
+            <div>
+              <h4>Интенсивы и подготовка к экзаменам</h4>
+              <div class="small">Короткие циклы для быстрого результата — ОГЭ и ЕГЭ, бизнес конференции.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Стоимость занятий — оформлено карточками как на примере -->
+      <section id="prices">
+        <h3 class="section-title">Стоимость занятий</h3>
+        <div class="prices">
+          <div class="price-card">
+            <div class="price-header">
+              <div>
+                <div style="font-weight:700">Индивидуальные</div>
+				<div style="font-weight:700">занятия</div>
+                <div class="price-desc">Общий английский, 50 минут</div>
+              </div>
+              <div class="price-sum">1300 ₽</div>
+            </div>
+            <ul class="features">
+			  <li>2 раза в неделю</li>
+              <li>Персональная программа</li>
+              <li>Домашние задания и обратная связь</li>
+            </ul>
+            <button class="btn btn-primary">Записаться</button>
+          </div>
+
+          <div class="price-card popular">
+            <div class="price-header">
+              <div>
+                <div style="font-weight:700">Минигруппа</div>
+				<div style="font-weight:700">(2-4 чел)</div>
+                <div class="price-desc">60-70 минут</div>
+              </div>
+              <div class="price-sum">6000 ₽</div>
+            </div>      
+            <ul class="features">
+              <li>2 раза в неделю</li>
+              <li>Еще больше разговорной практики</li>
+              <li>Простым языком о самом сложном</li>
+            </ul>
+            <button class="btn btn-primary">Выбрать абонемент</button>
+          </div>
+
+          <div class="price-card">
+            <div class="price-header">
+              <div>
+                <div style="font-weight:700">Подготовка</div>
+				<div style="font-weight:700">к ОГЭ и ЕГЭ</div>
+                <div class="price-desc">Индивидуально,60 минут</div>
+              </div>
+              <div class="price-sum">1600 ₽ / чел.</div>
+            </div>
+            <ul class="features">
+              <li>Работающая программа</li>
+              <li>Организация вашего времени</li>
+            </ul>
+            <button class="btn btn-primary">Забронировать</button>
+          </div>
+        </div>
+        <div style="margin-top:12px;color:var(--muted);font-size:13px">Цены ориентировочные — возможны скидки для студентов и при оплате нескольких месяцев вперед.</div>
+      </section>
+
+      <section id="reviews">
+        <h3 class="section-title">Отзывы</h3>
+        <div class="grid-3">
+          <div class="card">
+            <div style="font-weight:700">Мария, 22 года</div>
+            <div class="small" style="margin-top:8px">Наталья помогла мне подготовиться к собеседованию — благодаря занятиям я уверенно говорила на интервью и получила должность.</div>
+          </div>
+          <div class="card">
+            <div style="font-weight:700">Игорь, 16 лет</div>
+            <div class="small" style="margin-top:8px">Оценки в школе улучшились. Теперь домашку по школьному аглийскому делаю сам.Уже лучше понимаю на слух.</div>
+          </div>
+          <div class="card">
+            <div style="font-weight:700">Ольга, 35 лет</div>
+            <div class="small" style="margin-top:8px">Эффективные занятия для занятых людей: разбор рабочих кейсов, деловая лексика — всё в деле!</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h3 class="section-title">Контакты</h3>
+        <div class="contact-grid">
+          <div>
+            <p class="small">Оставьте заявку — я свяжусь в течение суток</p>
+            <form id="contactForm">
+              <input type="text" name="name" placeholder="Ваше имя" required />
+              <input type="email" name="email" placeholder="Email" required />
+              <input type="text" name="phone" placeholder="Телефон (опционально)" />
+              <textarea name="message" placeholder="Коротко о цели обучения"></textarea>
+              <button class="btn btn-primary" type="submit">Отправить</button>
+            </form>
+            <div id="formMessage" style="margin-top:10px;color:var(--muted);display:none"></div>
+          </div>
+
+          <aside style="padding:16px;background:linear-gradient(180deg,#fff,#f8fafb);border-radius:12px;box-shadow:var(--shadow)">
+            <div style="font-weight:700">Контактная информация</div>
+            <div class="small" style="margin-top:8px">Email: gurova.natalya@mail.ru</div>
+            <div class="small">Телефон: +7 9958753411</div>
+            <div class="small" style="margin-top:8px">г.Благовещенск, ул.Горького,66, офис 3</div>
+            <div style="margin-top:12px">
+              <button class="btn btn-ghost" onclick="window.location='mailto:anna@example.com'">Написать на почту</button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>© Анна Иванова — Репетитор английского</div>
+        <div class="small">Сделано с любовью • Серебристая тема с оранжевым акцентом</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // smooth anchor scrolling for older browsers
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',function(e){
+        e.preventDefault();
+        const id = this.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el) el.scrollIntoView({behavior:'smooth'});
+      })
+    })
+
+    // dummy form handler
+    document.getElementById('contactForm').addEventListener('submit',function(e){
+      e.preventDefault();
+      const msg = document.getElementById('formMessage');
+      msg.style.display = 'block';
+      msg.style.color = 'var(--accent)';
+      msg.textContent = 'Спасибо! Ваша заявка отправлена. Я свяжусь с вами в ближайшее время.';
+      this.reset();
+    });
+
+    // hook price buttons to scroll to contact
+    document.querySelectorAll('.price-card .btn').forEach(b=>{
+      b.addEventListener('click',()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}));
+    })
+  </script>
+</body>
+</html>
